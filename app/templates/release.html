@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="page-header">
+  <h2>Release Notes</h2>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.9 - December 22, 2017</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Adds option to delete files after sorting them</li>
+          <li>Fixes bug where we appended an extra "SeriesDescription" sorting attribute when loading a new folder of images.</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.8 - June 15, 2016</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Updates pydicom to version 0.9.9</li>
+          <li>Fixes a bug where '%' in a field caused an error</li>
+          <li>Moves the configuration file to a user's home directory rather than the application directory</li>
+      </ul>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.7 - December 5, 2013</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Adds the ability to retain a file's extension</li>
+      </ul>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.6 - August 9, 2013</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Adds several more options to preference panel</li>
+          <li>Adds support for standalone applications on Macintosh systems</li>
+          <li>Switches to cx_freeze for binary creation</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.5 - April 1, 2013</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Fixes bug when only one or two files were selected for sorting</li>
+          <li>Improved unicode handling on OS X</li>
+          <li>Properly sanitizes files and folders</li>
+          <li>Graceful handling of DICOMDIR files</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.4 - August 17, 2012</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Fixed setup.py for better creation of installation files on windows</li>
+          <li>Updated to use pydicom 0.9.7</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.3 - February 29, 2012</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Updated configuration file design</li>
+          <li>Updated DICOM standard fieldnames</li>
+          <li>More graceful handling of invalid filenames</li>
+          <li>Provided mechanism to prevent over-writing existing files</li>
+          <li>Added stricter requirement for providing patientID when anonymizing</li>
+          <li>Added more graceful handling of Philips PS files</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.2 - December 6, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Fixed issue where the lack of a birthdate caused a crash</li>
+          <li>Fixed isshe where the modal dialogs hung on OS X</li>
+          <li>Enabled ability to remember last output directory upon successive runs</li>
+          <li>Removed invalid NTFS characters from output paths</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.1 - September 8, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Ensured that Patients age is a valid field in cases where there birthdate is removed during anonymization</li>
+          <li>Instead of completely removing the birthdate of an individual during anonymization, the birth YEAR was left which is an acceptable identifier</li>
+          <li>Removed checkbox for keeping the directory structure in tact</li>
+          <li>Added Series Description to the properties list by default and if all fields are removed, the original directory structure is maintained</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.1.0 - September 6, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Enabled the ability to anonymize DICOMs in place</li>
+          <li>Allowed recursive tokenization for cascading references to fields</li>
+          <li>Enabled Quick Editing for providing a substituted PatientName/PatientID combo for anonymization</li>
+          <li>Fixed Error when Windows installer was unable to create a Desktop Icon</li>
+          <li>Moved configuration file to central location on all platforms</li>
+          <li>Corrected issues when pulling anonymization fields from configuration files</li>
+          <li>Enabled multi-threading for updater</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.0.3 - August 18, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Corrected directory naming issues with OS X</li>
+          <li>Fixed non-functional checkboxes for Anonymizer in Windows XP</li>
+          <li>Packaged initial dicomSort.ini configuration file to eliminate need to run Dicom Sort as administrator in Windows Vista and 7</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.0.2 - May 27, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Enabled recognition of SIEMENS Phoenix Zip Reports</li>
+          <li>Enabled recognition of SIEMENS 3D Post-Processing Files</li>
+          <li>Fixed bug where file listings were incomplete</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.0.1 - April 29, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Generated all windows installer and executable files</li>
+          <li>Allowed the user to select multiple folder sources at once</li>
+          <li>Added updater functionality</li>
+          <li>Fixed Windows 7 compatibility issues with Folder Dialog</li>
+          <li>Converted all icons to pyEmbeddedImages</li>
+          <li>Fixed bug in incorrect identification of Image Types</li>
+          <li>Fixed bug that prevented centering of dialogs over the parent</li>
+      </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Version 2.0.0 - April 28, 2011</h3>
+  </div>
+  <div class="panel-body">
+      <ul>
+          <li>Enabled token-based sorting</li>
+          <li>Created bug-reporting tools</li>
+          <li>Multi-threaded sorting</li>
+          <li>More flexible Anonymization options</li>
+          <li>Added debug window option for advanced operation</li>
+          <li>Moved all configurations to .ini style configuration</li>
+          <li>Developed tabbed preference pane</li>
+      </ul>
+  </div>
+</div>
+{% endblock %}

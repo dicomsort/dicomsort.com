@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+
+{% block main %}
+<!--
+<div class="page-header">
+  <h2>Features</h1>
+</div>
+-->
+<style>
+    .image {
+        text-align: center;
+        border: 1px solid #000;
+        margin: 10px;
+    }
+
+    .bs-sidenav {
+        background-color: #EEE;
+        border-radius:5px;
+    }
+
+    .main {
+        color: #484e55;
+        font-weight:bold;
+    }
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" style="padding-top:20px;">
+            <div class"bs-sidebar hidden-print" role="complementary">
+                <ul class="nav bs-sidenav">
+                    <li>
+                    <a class="main" href="#installation">Installation</a>
+                    <ul class="nav navbar-collapse">
+                        <li><a href="#windows-installation">Windows</a></li>
+                        <li><a href="#mac-installation">Mac</a></li>
+                        <li><a href="#source-installation">Source</a></li>
+                    </ul>
+                    </li>
+                    <li><a class="main" href="#sorting">Sorting</a>
+                    <ul class="nav navbar-collapse">
+                        <li><a href="#source-directory">Source Directory</a></li>
+                        <li><a href="#dicom-properties">DICOM Properties</a></li>
+                        <li><a href="#sort-properties">Properties To Use</a></li>
+                        <li><a href="#fname-format">Filename Format</a></li>
+                        <li><a href="#sorting-button">Sorting the Images</a></li>
+                    </ul>
+                    </li>
+                    <li><a class="main" href="#anonymization">Anonymization</a>
+                    <ul class="nav navbar-collapse">
+                        <li><a href="#standard-anon">Standard Anonymization</a></li>
+                        <li><a href="#custom-anon">Custom Anonymization</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="page-header">
+                <h1 id="installation">Installation</h1>
+                <p>Executables for Mac and Windows have been created from the source
+                code using <a target="_blank" href="http://cx-freeze.sourceforge.net">cx_freeze</a>.
+                All files needed to successfully run DICOMsort 
+                are contained within this executable. Please see below for specific
+                installation instructions.</p>
+                <p>All install files can be found in the 
+                <a href="{{ url_for('downloads') }}">Downloads</a> section.</p>
+
+                <p>After successful installation, you should see the following:</p>
+                <img class="image" src="{{ url_for('static', filename='images/documentation/fullgui.png') }}">
+            </div>
+
+            <h2 id="windows-installation">Windows Installation</h2>
+            <p>After downloading the Windows install file, double click the setup 
+            file to run the installer. You will be prompted to select a few 
+            options such as where to install the files as well as whether to 
+            include a desktop icon.</p>
+
+            <p>The Windows executable is currently only 32-bit due to limitations
+            of <a target="_blank" href="http://cx-freeze.sourceforge.net">cx_freeze</a>. We hope to have a 64-bit version available in the near 
+            future.</p>
+
+            <p>After successful installation, you should be able to launch the
+            program from either your Program Files folder or the Start Menu.</p>
+
+            <div class="well">
+                <p><b>NOTE:</b> DICOMsort uses an .ini configuration file which is
+                located in the Program Files directory alongside the executable. As
+                a result, the program must be able to write to the DICOM Sort folder
+                that contains the executable. On Windows 7, this may require that you
+                run the application as an administrator.</p>
+            </div>
+
+            <h2 id="mac-installation">Mac Installation</h2>
+            <p>The Mac executable is found within the Mac OS X Disk Image file (DMG) that
+            is available <a href="{{ url_for('downloads') }}">here</a>. After 
+            downloading the DMG file (sorry for the large file size!), double 
+            click the file to mount the disk image.</p>
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/mounted.dmg.png') }}">
+
+            <div class="well">
+                <em>If mounting the disk image doesn't automatically open a Finder
+                window showing the contents, then you will need to navigate to
+                the <b>/Volumes/DICOM Sort</b> folder on your machine.</em>
+            </div>
+
+            <p>Simply drag and drop the <b>DICOM Sort.app</b> file from the DMG
+            onto your local machine, preferably in your <b>Applications</b> 
+            folder. Double-clicking the file should launch the program.
+
+            <h2 id="source-installation">Source Installation</h2>
+            <p>It may be desirable to run the software from the source code if there
+            is a bug fix that may not yet be available in the executable form or
+            possibly if you're running Linux.</p>
+
+            <p>To successfully install from source, you will need to obtain the
+            specific versions of the python modules specified below. This software
+            has not been tested on Python versions beyond 2.7.</p>
+            <ul>
+                <li><b>pydicom</b> <a target="_blank" href="https://github.com/darcymason/pydicom">0.9.9</a></li>
+                <li><b>wxpython</b> <a target="_blank" href="http://wxpython.org">3.0</a></li>
+            </ul>
+
+            <p>The stable release of the source code can be found 
+            <a target="_blank" href="https://github.com/suever/dicomSort/tree/v2.1.8">here</a>. 
+            The source code can either be downloaded directly from github or cloned using the following command:</p>
+
+            <div style="margin-top:15px;">
+            <pre>$ git clone https://github.com/suever/dicomSort.git</pre>
+            </div>
+
+            Once you have downloaded the source code and installed the appropriate modules,
+            you should be able to launch the software by running the DicomSort.pyw file.
+            <div style="margin-top:15px;">
+            <pre>$ python DicomSort.pyw</pre>
+            </div>
+
+
+            <div class="page-header">
+                <h1 id="sorting">Sorting</h1>
+                The primary purpose of DICOMsort is to sort DICOM images into
+                subfolders based upon the information provided in the DICOM
+                header. This program allows you to specify <em>exactly</em> 
+                which fields to sort by, thereby providing a great deal of 
+                flexibility.
+            </div>
+
+            <h2 id="source-directory">The Source Directory</h2>
+            <p>The first step in the sorting process is to specify where the DICOM
+            images that you would like to sort are located. Typically this would
+            be a CD exported from either an imaging system or PACS system.</p>
+
+            <p>Sorting is performed in a recursive fashion in that all images in
+            the source directory are sorted, even those in subfolders. As a 
+            result be careful and specify a directory that contains only the
+            images that you would like to sort.</p>
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/source.dir.png') }}">
+
+            <p>The source directory can be specified using the <b>Browse</b> 
+            button or simply by entering the directory or dragging the directory
+            into the text field.</p>
+
+            <p>Once the directory has been selected, the program will scan the 
+            folder in an attempt to find DICOM images. A warning will be provided
+            if no valid DICOM images were located. If all goes well, the 
+            <b>DICOM Properties</b> list should be populated with fields from the 
+            DICOM header</p>
+
+            <h2 id="dicom-properties">DICOM Properties</h2>
+            <p>The <b>DICOM Properties</b> provides a list of valid fields that
+            were available for the DICOM images within your source directory. 
+            These are the fields that can be used for sorting. It 
+            is important to note that this list will change from modality to 
+            modality and image to image.</p>
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/dicom.props.png') }}">
+            <img class="image" src="{{ url_for('static', filename='images/documentation/prop.search.png') }}">
+
+            <p>In order to quickly find a particular DICOM header field, use
+            the search box located below the <b>DICOM Properties</b> list.</p>
+
+            <h2 id="sort-properties">Properties To Use</h2>
+            <p>The <b>Properties To Use</b> list shows the fields that are going
+            to be used for the sorting. By default, the SeriesDescription is
+            used.</p>
+
+            <p>The top of the list represents the top-level folder while lower
+            items are successive subfolders</p>
+
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/sortorder.png') }}" style="border:0px;">
+
+            <h4>Adding Sortable Fields</h4>
+            <p>Fields can be selected for sorting by either double-clicking on the
+            property in the <b>DICOM Properties</b> list, or clicking on the <b>&gt;&gt;</b> button.</p>
+
+            <p>New fields are either added at the top of the list of underneath the
+            currently-selected item.</p>
+           
+            <h4>Removing Sortable Fields</h4>
+            <p>Fields can be removed from analysis by either double-clicking on the
+            property in the <b>Properties to Use</b> list, or clicking on the <b>&lt;&lt;</b> button.</p>
+
+            <p>Due to the fact that SeriesDescription often distinguishes similar
+            images, if you choose to remove the SeriesDescription field, you will
+            be prompted if you want to change the file naming convention to 
+            ensure unique sorting.</p>
+
+            <h4>Reordering Sortable Fields</h4>
+            <p>You can re-arrange the ordering of the <b>Properties to Use</b>
+            list by either dragging the fields around or using the <b>Up</b>
+            and <b>Down</b> buttons.
+
+            <h2 id="fname-format">Filename Format</h2>
+            <p>By default we use a filename format which is a combination of the
+            image type and instance number. This results in Images such as:</p>
+            <ul>
+                <li>Image (0001)</li>
+                <li>Mag (0001)</li>
+                <li>Phase (0001)</li>
+            </ul>
+
+            <p>This behavior can be changed in the preferences panel accessible
+            via the File menu.</p> 
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/fname.format.png') }}">
+
+            <p>The options are as follows:</p>
+            <ul>
+                <li><b>Image (0001)</b> - This is the default behavior as described above</li>
+                <li><b>Keep Original Filename</b> - Like it states, this will use the original 
+                names rather than renaming the individual files. The files, however will still be
+                sorted into subfolders.</li>
+                <li><b>Custom Filename Format</b> - You can specify the filename specification you would like to use. You
+                are able to use token-based python string notation using any valid DICOM field (more info 
+                <a target="_blank" href="http://docs.python.org/2/library/stdtypes.html#string-formatting">here</a>.
+                The string that currently populates this field is the string that is
+                used to generate the Image (0001) format.</li>
+            </ul>
+
+            <h2 id="sorting-button">Sorting The Images</h2>
+            <p>When you are satisfied with your selection, click the <b>Sort Images</b>
+            button to perform the sorting. You will be presented with a dialog to
+            select the destination directory. This can be an existing directory
+            or a new directory. If you hit cancel, the sorting procedure will not
+            be performed.</p>
+
+            <p>The status of the sorting procedure is displayed in the status
+            bar. If there is an error during sorting, a log file will be created
+            in the program folder. Be sure to submit a bug report so we can get
+            it fixed!</p>
+
+            <div class="page-header">
+                <h1 id="anonymization">Anonymization</h1>
+                In addition to sorting of DICOM images, DICOMsort is capable of 
+                performing simple and customizable anonymization of patient data.
+            </div>
+
+            <h2 id="standard-anon">Standard Anonymization</h2>
+            <p>Anonymization can be performed during image sorting or on DICOM 
+            images in-place. The user can enable Anonymization by simply selecting
+            the <b>Anonymize Data</b> checkbox above the <b>Sort Images</b> button.
+            When you check this box, you will be presented with a popup which
+            allows you to specify the replacement Patient Name and optionally the PatientID.</p>
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/anonymize.png') }}">
+
+            <h2 id="custom-anon">Custom Anonymization</h2>
+            <p>Because manufacturers all interpret the DICOM standard differently, 
+            it may be necessary to specify additional fields to anonymize. You can
+            specify the fields to anonymize as well as the replacement values in the
+            Preference panel (Accessible from the File Dialog).</p>
+
+            <img class="image" src="{{ url_for('static', filename='images/documentation/anonfields.png') }}">
+
+            <h4>Specifying Field to Anonymize</h4>
+            <p>To specify that you want to remove a field from the DICOM images,
+            be sure that the checkbox next to the field is selected. The field
+            will be replaced by the value specified to the right, or nothing if
+            it is left blank.</p>
+
+            <h4>Specifying a Replacement Value</h4>
+            <p>You can specify the value to use in place of the actual data in 
+            the right-hand column. </p>
+            <p>One of the real powerful features is that you
+            can use python-based token-based string replacements. For example, 
+            in the screenshot above, the PatientID field will be filled in with
+            the value of the PatientName field. The token can be any other valid
+            DICOM field present in the image. More information about the token-based 
+            strings can be found <a target="_blank" href="http://docs.python.org/2/library/stdtypes.html#string-formatting">here</a>.</p>
+
+            <p>Be sure to save your own default configuration to make your life easier.</p>
+
+            <div class="page-header">
+                <h1>Further Information</h1>
+                If you have any questions or feel that something should be added
+                to this brief documentation, feel free to provide feedback.
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

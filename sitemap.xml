@@ -6,23 +6,23 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>http://dicomsort.com/</loc>
+    <loc>https://dicomsort.com/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dicomsort.com/features.html</loc>
+    <loc>https://dicomsort.com/features.html</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dicomsort.com/documentation.html</loc>
+    <loc>https://dicomsort.com/documentation.html</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dicomsort.com/downloads.html</loc>
+    <loc>https://dicomsort.com/downloads.html</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dicomsort.com/release.html</loc>
+    <loc>https://dicomsort.com/release.html</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

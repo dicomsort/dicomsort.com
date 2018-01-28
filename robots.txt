@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://dicomsort.com/sitemap.xml
+Sitemap: https://dicomsort.com/sitemap.xml

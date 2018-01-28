@@ -66,4 +66,4 @@ def google():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    return send_file('sitemap.xml')
+    return render_template('sitemap.xml')

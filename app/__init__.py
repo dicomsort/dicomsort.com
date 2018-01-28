@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from config import DevConfig, ProdConfig
+from app.assets import assets
 
 conf = {
     'development': DevConfig,
@@ -9,5 +10,6 @@ conf = {
 
 app = Flask(__name__)
 app.config.from_object(conf)
+assets.init_app(app)
 
 from app import views

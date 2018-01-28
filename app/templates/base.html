@@ -16,7 +16,10 @@
 
         <!-- CSS files -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/suever.css') }}">
+
+        {% assets "css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {% endassets %}
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">

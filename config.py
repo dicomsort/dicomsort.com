@@ -20,7 +20,7 @@ class DevConfig(Config):
 class ProdConfig(Config):
 
     SERVER_NAME = 'dicomsort.com'
-    PREFERRED_URL_SCHEME = 'http'
+    PREFERRED_URL_SCHEME = 'https'
 
     FREEZER_BASE_URL = "%s://%s" % (PREFERRED_URL_SCHEME, SERVER_NAME)
 

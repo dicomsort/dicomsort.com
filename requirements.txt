@@ -1,4 +1,4 @@
 Flask==1.0.3
 requests==2.22.0
-flask-assets==0.12
+flask-assets==2.0
 cssmin==0.2.0

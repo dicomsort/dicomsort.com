@@ -1,5 +1,6 @@
 import os
 
+
 class Config:
 
     BASEDIR = os.path.abspath(os.path.dirname(__file__))

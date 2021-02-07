@@ -18,4 +18,4 @@ deploy:
   fqdn: dicomsort.com
   committer-from-gh: true
   on:
-    branch: master
+    branch: main

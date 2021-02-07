@@ -1,10 +1,11 @@
 import os
 
+
 class Config:
 
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     WEBROOT = os.path.join(BASEDIR, 'app')
-    VERSION = '2.1.9'
+    VERSION = '3.0.0'
 
     FREEZER_DEFAULT_MIMETYPE = 'text/html'
     FREEZER_DESTINATION = os.path.join(BASEDIR, 'build')

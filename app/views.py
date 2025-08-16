@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 # Import Flask app
 from app import app
@@ -6,6 +7,10 @@ from app import app
 # Flask imports
 from flask import render_template, request, url_for
 
+
+@app.context_processor
+def inject_current_year():
+    return {'current_year': datetime.now().year}
 
 @app.route('/')
 def index():

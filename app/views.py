@@ -100,3 +100,33 @@ def google():
 @app.route('/sitemap.xml')
 def sitemap():
     return render_template('sitemap.xml')
+
+
+@app.route('/privacy-policy.html')
+def privacy_policy():
+    description = 'Privacy Policy for DICOM Sort - How we collect, use, and protect your information'
+    return render_template(
+        'privacy-policy.html',
+        title='Privacy Policy',
+        description=description,
+    )
+
+
+@app.route('/terms-of-service.html')
+def terms_of_service():
+    description = 'Terms of Service for DICOM Sort - Rules and guidelines for using our website and software'
+    return render_template(
+        'terms-of-service.html',
+        title='Terms of Service',
+        description=description,
+    )
+
+
+@app.route('/cookie-policy.html')
+def cookie_policy():
+    description = 'Cookie Policy for DICOM Sort - How we use cookies and tracking technologies'
+    return render_template(
+        'cookie-policy.html',
+        title='Cookie Policy',
+        description=description,
+    )

@@ -92,6 +92,11 @@ def robots():
     return "User-agent: *\nSitemap: %s" % url_for('sitemap', _external=True)
 
 
+@app.route('/ads.txt')
+def ads():
+    return "google.com, pub-8896084345381468, DIRECT, f08c47fec0942fa0"
+
+
 @app.route('/google732ee66856c8d2d9.html')
 def google():
     return 'google-site-verification: google732ee66856c8d2d9.html'
